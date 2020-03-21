@@ -18,7 +18,7 @@ The converter will interpret the input data according to the input system, and w
 
 The converter only handles just intonation intervals. It does not handle individual notes.
 
-# Supported systems
+## Supported systems
 
 The following systems are supported in both output and input:
 
