@@ -128,7 +128,7 @@ These are not: `P1`, `P1()`, `P4,L(F-,A-)`, `M2(d+,e+,g+,b+)`.
 
 Uses the same ASCIIfication as specified by the FJS docs.
 
-In the output, no adjustments are ever multiplied, and all adjustments are listed in non-descending order of the associated prime. In the input, `1` is allowed as an adjustment, and it is legal to include both an adjustment and its inverse, even though it has no effect. Also `3` is allowed as a Pythagorean comma adjustment, although it will never appear in the output.
+In the output, no adjustments are ever multiplied, and all adjustments are listed in non-descending order of the associated prime. In the input, `1` is allowed as an adjustment, and it is legal to include both an adjustment and its inverse, even though it has no effect. Also, `3` is allowed as a Pythagorean comma adjustment, although it will never appear in the output.
 
 These are well-formed FJS intervals: `M3^5`, `cm3^7`, `M2^5,7`, `d5^7_5`, `A7^5,5,5`, `P1^65537`.
 
@@ -146,4 +146,4 @@ These are well-formed color notation intervals: `y3`, `sw6`, `zg5`, `cc1o4`, `gg
 
 These are not: `j3`, `3g2`, `cc11o4`, `5o7`.
 
-These are well-formed color notation intervals, but will never be seen in the output: `LLzq2`, `gz5`, `Lsw1`, `cyg5`.
+These are well-formed color notation intervals, but will never be seen in the output: `LLzq2`, `gz5`, `yg5`, `gy5`, `czygr5`.
