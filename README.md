@@ -46,7 +46,7 @@ Both will be given to 4 decimal places.
 
 Ratios always consist of two positive integers separated by one slash. Ratios are allowed to be not in simplest form, but this will never happen in the output.
 
-These are well-formed ratios: `5/4`; `729/640`; `1/1`; `531441/524288`; `5/6`.
+These are well-formed ratios: `5/4`, `729/640`, `1/1`, `531441/524288`, `5/6`.
 
 These are not: `5`, `2/`, `5//1`, `/3`, `-5/4`, `5/-4`, `4/5/6`, `5:4`, `10:12:15`, `0/3`, `7/0`, `0/0`.
 
