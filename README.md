@@ -9,9 +9,10 @@ The converter takes a command that consists of three parts, e.g.
 `fjs ratio 45/32`
 
 The parts are always separated by spaces, and spaces are found exactly nowhere else.
-Part 1: target (output) system
-Part 2: input system
-Part 3: input data
+
+- Part 1: target (output) system
+- Part 2: input system
+- Part 3: input data
 
 The converter will interpret the input data according to the input system, and will convert this data to a new format according to the target system, which it will then output. `fjs ratio 45/32` is therefore understood as follows: 'I want to convert into the **FJS** the following **ratio**: **45/32**'. And since 45/32 is called `A4^5` in the FJS, the output will be `A4^5`.
 
