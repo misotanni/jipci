@@ -416,6 +416,7 @@ def from_fjs(s): # FJS to list
 		if s[i] == "," and not (s[i-1].isnumeric() and s[i+1].isnumeric()): raise wrong_format_fjs
 	s += ",!"
 	if s[0] not in ["^", "_", "!"]: raise wrong_format_fjs
+	if "_" in s and "^" in s and s.find("_") < s.find("^"): raise wrong_format_fjs
 	if s.count("^") > 1 or s.count("_") > 1 or s.count("!") > 1 or "^_" in s: raise wrong_format_fjs
 	to, tu = 1, 1
 	i = 0
