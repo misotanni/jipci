@@ -66,7 +66,7 @@ These are well-formed monzos, but will never be seen in the output: `[0]`, `[1,1
 
 Intervals consist of an octave prefix, followed by a variant, followed by the stepspan, followed by any extended just intonation accidentals specific to the EJI system in question. Here, everything aside from these just intonation accidentals is described.
 
-The variant and stepspan notation is widely known: `P5` means a perfect fifth, `M3` means a major third, etc. Doubly, triply, etc. augmented or diminished intervals repeat the `A` or `d`: `AA4` is a doubly augmented fourth. Color notation use alternative variants; these will be discussed in the color notation section.
+The variant and stepspan notation is widely known: `P5` means a perfect fifth, `M3` means a major third, etc. Doubly, triply, etc. augmented or diminished intervals repeat the `A` or `d`: `AA4` is a doubly augmented fourth. Color notation uses alternative variants; these will be discussed in the color notation section.
 
 The octave prefix consists of an optional minus sign followed by a string of `c` letters to represent octave shifts. This has been used in Kite's color notation, but the version used in the converter is slightly different: negative octave shifts are allowed, thus `-c` is one octave down, `-cc` is two octaves down, etc. The default octave includes `P1` and excludes `P8`. For example, `cM2` = `M9`, `ccM2` = `cM9` = `M16`, `-cM2` = 'negative m7'. The converter does NOT use negative intervals (e.g. 'negative P4' = 3/4); instead, it uses negative octave shifts, so 3/4 = `-cP5`.
 
@@ -96,13 +96,15 @@ These are well-formed Helmholtz-Ellis intervals, but will never be seen in the o
 
 ### Ben Johnston's notation
 
-All the accidentals except for the syntonic comma are handled in the following way. Every accidental has been given an ASCII form:
+All the accidentals except for the syntonic comma are handled in the following way.
+
+Every accidental has been given an ASCII form:
 
 - 35/36 and 36/35 become `7` and `L`;
 - 33/32 and 32/33 become `^` and `v`;
 - All higher accidentals take the prime number itself for the otonal accidental, or with a minus sign for the utonal accidental; e.g. 95/96 and 96/95 become `19` and `-19`.
 
-These accidentals are separated by the `,` symbol. They can appear in any order, but in the output they will always appear sorted in non-descending order by size of the prime they stand for. Also, it is legal to include both an accidental and its inverse, but this will never happen in the output.
+These accidentals are separated from each other, and from the interval name, by the `,` symbol. They can appear in any order, but in the output they will always appear sorted in non-descending order by size of the prime they stand for. Also, it is legal to include both an accidental and its inverse, but this will never happen in the output.
 
 After this, syntonic commas are handled, differently in the output than in the input.
 
