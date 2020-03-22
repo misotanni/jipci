@@ -709,7 +709,9 @@ def to_fjs(l): # list to FJS
 		while i < len(l):
 			if l[i] < 0:
 				if not x[len(x)-1] == "_": x += ","
-				x += str(a[i])
+				d = str(a[i])
+				x += d
+				x += (-l[i]-1) * ("," + d)
 			i += 1
 	return x
 
