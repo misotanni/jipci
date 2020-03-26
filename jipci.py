@@ -412,73 +412,74 @@ def from_fjs(s): # FJS to list
 	s = q[1]
 	q = q[0]
 	x = staff_to_pyth(q)[0]
-	for i in range(len(s)-1):
-		if s[i] == "," and not (s[i-1].isnumeric() and s[i+1].isnumeric()): raise wrong_format_fjs
-	s += ",!"
-	if s[0] not in ["^", "_", "!"]: raise wrong_format_fjs
-	if "_" in s and "^" in s and s.find("_") < s.find("^"): raise wrong_format_fjs
-	if s.count("^") > 1 or s.count("_") > 1 or s.count("!") > 1 or "^_" in s: raise wrong_format_fjs
-	to, tu = 1, 1
-	i = 0
-	if s[i] == "^":
-		i += 1
-		ia = i
-		while s[i] not in ["_", "!"]:
+	if s != "":
+		for i in range(len(s)-1):
+			if s[i] == "," and not (s[i-1].isnumeric() and s[i+1].isnumeric()): raise wrong_format_fjs
+		s += ",!"
+		if s[0] not in ["^", "_", "!"]: raise wrong_format_fjs
+		if "_" in s and "^" in s and s.find("_") < s.find("^"): raise wrong_format_fjs
+		if s.count("^") > 1 or s.count("_") > 1 or s.count("!") > 1 or "^_" in s: raise wrong_format_fjs
+		to, tu = 1, 1
+		i = 0
+		if s[i] == "^":
 			i += 1
-			if s[i] in [",", "_", "!"]:
-				ib = i
-				to *= int(s[ia:ib])
-				if s[i] == ",":
-					i += 1
-					ia = i
-	if s[i] == "_":
-		i += 1
-		ia = i
-		while s[i] != "!":
+			ia = i
+			while s[i] not in ["_", "!"]:
+				i += 1
+				if s[i] in [",", "_", "!"]:
+					ib = i
+					to *= int(s[ia:ib])
+					if s[i] == ",":
+						i += 1
+						ia = i
+		if s[i] == "_":
 			i += 1
-			if s[i] in [",", "!"]:
-				ib = i
-				tu *= int(s[ia:ib])
-				if s[i] == ",":
-					i += 1
-					ia = i
-	w = []
-	co, cu, c = [], [], []
-	n, p = 0, 2
-	if to < 1 or tu < 1: raise wrong_format_fjs
-	while to > 1 or tu > 1:
-		w.append(p)
-		co.append(0)
-		cu.append(0)
-		while to % p == 0:
-			to /= p
-			co[n] += 1
-		while tu % p == 0:
-			tu /= p
-			cu[n] += 1
-		n += 1
-		while True:
-			if p == 2: p += 1
-			else: p += 2
-			j = True
-			for z in range(2, int(math.sqrt(p))+1):
-				if p % z == 0: j = False
-			if j: break
-	cl = max(len(co), len(cu))
-	while len(c) < cl: c.append(0)
-	for i in range(len(co)):
-		if co[i] != 0: c[i] += co[i]
-	for i in range(len(cu)):
-		if cu[i] != 0: c[i] += -cu[i]
-	if c == []: return x
-	while len(c) < 2: c.append(0)
-	if c[0] != 0: raise wrong_format_fjs
-	for i in range(1, len(c)):
-		f = fjs(w[i])
-		for k in range(2):
-			x[k] += f[k] * c[i]
-	c = c[2:]
-	x += c
+			ia = i
+			while s[i] != "!":
+				i += 1
+				if s[i] in [",", "!"]:
+					ib = i
+					tu *= int(s[ia:ib])
+					if s[i] == ",":
+						i += 1
+						ia = i
+		w = []
+		co, cu, c = [], [], []
+		n, p = 0, 2
+		if to < 1 or tu < 1: raise wrong_format_fjs
+		while to > 1 or tu > 1:
+			w.append(p)
+			co.append(0)
+			cu.append(0)
+			while to % p == 0:
+				to /= p
+				co[n] += 1
+			while tu % p == 0:
+				tu /= p
+				cu[n] += 1
+			n += 1
+			while True:
+				if p == 2: p += 1
+				else: p += 2
+				j = True
+				for z in range(2, int(math.sqrt(p))+1):
+					if p % z == 0: j = False
+				if j: break
+		cl = max(len(co), len(cu))
+		while len(c) < cl: c.append(0)
+		for i in range(len(co)):
+			if co[i] != 0: c[i] += co[i]
+		for i in range(len(cu)):
+			if cu[i] != 0: c[i] += -cu[i]
+		if c == []: return x
+		while len(c) < 2: c.append(0)
+		if c[0] != 0: raise wrong_format_fjs
+		for i in range(1, len(c)):
+			f = fjs(w[i])
+			for k in range(2):
+				x[k] += f[k] * c[i]
+		c = c[2:]
+		x += c
 	return x
 
 def from_he(s): # Helmholtz-Ellis to list
