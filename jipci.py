@@ -776,51 +776,51 @@ def to_ratio(l): # list to ratio
 	return s
 
 # main
-
-try:
-	r = input("Enter conversion command.\n")
-	i = r + " "
-	if (i.count(" ") != 3): raise incorrect_syntax
-	for n in range(3):
-		for l in range(len(i)):
-			if i[l] == " ":
-				o, i = i[:l], i[l+1:]
-				if n == 0: oc = o
-				elif n == 1: ic = o
-				elif n == 2: ix = o
-				break
-# convert input to list: bidirectional systems
-	if ic == "bj": s = from_bj(ix)
-	elif ic == "color": s = from_color(ix)
-	elif ic == "fjs": s = from_fjs(ix)
-	elif ic == "he": s = from_he(ix)
-	elif ic == "monzo": s = from_monzo(ix)
-	elif ic == "ratio": s = from_ratio(ix)
-	else: raise unknown_input
-# convert list to output: bidirectional systems
-	if oc == "bj": u = to_bj(s)
-	elif oc == "color": u = to_color(s)
-	elif oc == "fjs": u = to_fjs(s)
-	elif oc == "he": u = to_he(s)
-	elif oc == "monzo": u = to_monzo(s)
-	elif oc == "ratio": u = to_ratio(s)
-# convert list to output: output-only systems
-	elif oc == "cents": u = size(s, 1200)
-	elif oc == "mo": u = size(s, 1000)
-	else: raise unknown_output
-# done
-	print(u)
-# errors
-except incorrect_syntax: print("Error: Incorrect syntax.")
-except limit_bj: print("Error: Input interval is above Ben Johnston's 31-limit restriction.")
-except limit_he: print("Error: Input interval is above Helmholtz-Ellis's 61-limit restriction.")
-except unknown_input: print("Error: Input format \"%s\" not recognized." % ic)
-except unknown_output: print("Error: Output format \"%s\" not recognized." % oc)
-except wrong_format_bj: print("Error: Input not in Ben Johnston format.")
-except wrong_format_color: print("Error: Input not in color notation format.")
-except wrong_format_fjs: print("Error: Input not in FJS format.")
-except wrong_format_he: print("Error: Input not in Helmholtz-Ellis format.")
-except wrong_format_monzo: print("Error: Input is not a monzo.")
-except wrong_format_ratio: print("Error: Input is not a ratio.")
-except wrong_interval: print("Error: Incorrect form of Pythagorean interval.")
-except zero_ratio: print("Error: Zero makes no sense in ratios.")
+if __name__ == '__main__':
+	try:
+		r = input("Enter conversion command.\n")
+		i = r + " "
+		if (i.count(" ") != 3): raise incorrect_syntax
+		for n in range(3):
+			for l in range(len(i)):
+				if i[l] == " ":
+					o, i = i[:l], i[l+1:]
+					if n == 0: oc = o
+					elif n == 1: ic = o
+					elif n == 2: ix = o
+					break
+	# convert input to list: bidirectional systems
+		if ic == "bj": s = from_bj(ix)
+		elif ic == "color": s = from_color(ix)
+		elif ic == "fjs": s = from_fjs(ix)
+		elif ic == "he": s = from_he(ix)
+		elif ic == "monzo": s = from_monzo(ix)
+		elif ic == "ratio": s = from_ratio(ix)
+		else: raise unknown_input
+	# convert list to output: bidirectional systems
+		if oc == "bj": u = to_bj(s)
+		elif oc == "color": u = to_color(s)
+		elif oc == "fjs": u = to_fjs(s)
+		elif oc == "he": u = to_he(s)
+		elif oc == "monzo": u = to_monzo(s)
+		elif oc == "ratio": u = to_ratio(s)
+	# convert list to output: output-only systems
+		elif oc == "cents": u = size(s, 1200)
+		elif oc == "mo": u = size(s, 1000)
+		else: raise unknown_output
+	# done
+		print(u)
+	# errors
+	except incorrect_syntax: print("Error: Incorrect syntax.")
+	except limit_bj: print("Error: Input interval is above Ben Johnston's 31-limit restriction.")
+	except limit_he: print("Error: Input interval is above Helmholtz-Ellis's 61-limit restriction.")
+	except unknown_input: print("Error: Input format \"%s\" not recognized." % ic)
+	except unknown_output: print("Error: Output format \"%s\" not recognized." % oc)
+	except wrong_format_bj: print("Error: Input not in Ben Johnston format.")
+	except wrong_format_color: print("Error: Input not in color notation format.")
+	except wrong_format_fjs: print("Error: Input not in FJS format.")
+	except wrong_format_he: print("Error: Input not in Helmholtz-Ellis format.")
+	except wrong_format_monzo: print("Error: Input is not a monzo.")
+	except wrong_format_ratio: print("Error: Input is not a ratio.")
+	except wrong_interval: print("Error: Incorrect form of Pythagorean interval.")
+	except zero_ratio: print("Error: Zero makes no sense in ratios.")
